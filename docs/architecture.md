@@ -28,8 +28,6 @@ OctoFit Tracker is a three-tier application for a school fitness program. The st
 
 ## Implementation decisions
 
-Record your plan here before editing code.
-
 - Data tier decision: Add required-field validation to `User`, `Team`, `Activity`, and `Workout`.
   Preserve the existing seed behavior and idempotency for seeded and unrelated records.
  - Logic tier decision: Implement API contracts one capability at a time: activities, teams, leaderboard,
@@ -47,8 +45,6 @@ Record your plan here before editing code.
   a deliberate 4xx for unknown emails.
 
 ## Test plan
-
-Record the commands you run and what each failure means.
 
 - Data-tier command: `npm run test:data --prefix octofit-tracker/backend`
    Baseline: 4 of 5 fail. Required-field validation is missing on the models. The idempotent seed test passes and must keep passing
