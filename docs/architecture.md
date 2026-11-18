@@ -30,7 +30,7 @@ OctoFit Tracker is a three-tier application for a school fitness program. The st
 
 - Data tier decision: Add required-field validation to `User`, `Team`, `Activity`, and `Workout`.
   Preserve the existing seed behavior and idempotency for seeded and unrelated records.
- - Logic tier decision: Implement API contracts one capability at a time: activities, teams, leaderboard,
+- Logic tier decision: Implement API contracts one capability at a time: activities, teams, leaderboard,
   then workout suggestions. Keep Mongoose or cast failures from becoming HTTP 500s.
 - Presentation tier decision: Use `getJson` from the shared API client. Each route must provide loading, populated, empty, and accessible error states.
 - Activity tracking approach: Validate request fields and ObjectIds before querying. Verify that referenced users
@@ -47,12 +47,12 @@ OctoFit Tracker is a three-tier application for a school fitness program. The st
 ## Test plan
 
 - Data-tier command: `npm run test:data --prefix octofit-tracker/backend`
-   Baseline: 4 of 5 fail. Required-field validation is missing on the models. The idempotent seed test passes and must keep passing
+  Baseline: 4 of 5 fail. Required-field validation is missing on the models. The idempotent seed test passes and must keep passing
 - API command: `npm run test:api --prefix octofit-tracker/backend`
-    Baseline: 4 of 4 fail. Invalid requests return 501 instead of 400, the leaderboard is empty, and workout suggestions lack a `reason`.
+  Baseline: 4 of 4 fail. Invalid requests return 501 instead of 400, the leaderboard is empty, and workout suggestions lack a `reason`.
 - Frontend command: `npm test --prefix octofit-tracker/frontend`
-    Baseline: 15 of 15 fail. API content is not rendered, and the loading, empty, and error states are missing on all four routes.
+  Baseline: 15 of 15 fail. API content is not rendered, and the loading, empty, and error states are missing on all four routes.
 - Backend build command: `npm run build --prefix octofit-tracker/backend`
-    Must succeed after each backend change (TypeScript compiles).
+  Must succeed after each backend change (TypeScript compiles).
 - Frontend build command: `npm run build --prefix octofit-tracker/frontend`
- Must succeed after the presentation changes.
+  Must succeed after the presentation changes.
